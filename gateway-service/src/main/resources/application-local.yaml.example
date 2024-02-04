@@ -1,13 +1,9 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/kollektive
+    url: jdbc:postgresql://localhost:5432/
     driver-class-name: org.postgresql.Driver
-    username: kollektive
-    password: kollektive
-  activemq:
-    broker-url: tcp://localhost:61616
-    user: admin
-    password: admin
+    username:
+    password:
 #  jpa:
 #    properties:
 #      hibernate:
