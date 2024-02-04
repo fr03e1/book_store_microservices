@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/kollektive
+    driver-class-name: org.postgresql.Driver
+    username: kollektive
+    password: kollektive
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: admin
+    password: admin
+#  jpa:
+#    properties:
+#      hibernate:
+#        format_sql: true
+#
+#logging:
+#  level:
+#    root: info
+#    org.hibernate.SQL: debug
+#    org.hibernate.type.descriptor.sql.BasicBinder: trace

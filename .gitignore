@@ -1,0 +1,7 @@
+**/.idea/
+**/*.iml
+**/.logs/
+/lib/
+**/target/
+**/application-local.yaml
+**/.files

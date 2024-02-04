@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://172.30.0.1:5432/kollektive_v2
+    driver-class-name: org.postgresql.Driver
+    username: kollektive
+    password: 12345
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 15
+  activemq:
+    broker-url: tcp://95.216.4.119:63535
+    user: admin
+    password: admin
+
+kollektive:
+  web-socket:
+    core:
+      websocket-host: http://websocket-server:8080
