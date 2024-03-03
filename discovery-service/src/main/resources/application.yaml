@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8761
   servlet:
     encoding:
       charset: UTF-8
@@ -9,30 +9,21 @@ server:
     whitelabel:
       enabled: false
     path: /error
-
-spring:
-  application:
-    name: gateway-service
-  cloud:
-    gateway:
-      routes:
-        - id: inventory-service
-          uri: lb://inventory-service
-          predicates:
-            - Path=/api/inventory
-
 logging:
   level:
     root: INFO
   file:
-    path: .logs/gateway-service
+    path: .logs/discovery-service
     name: ${logging.file.path}/log.log
     max-history: 0
   pattern:
     file: "%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n"
     console: "%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger.%M - %msg%n"
-
 eureka:
+  instance:
+    hostname: localhost
   client:
+    register-with-eureka: false
+    fetch-registry: false
     service-url:
       defaultZone: http://localhost:8761/eureka

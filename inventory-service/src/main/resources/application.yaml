@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8082
   servlet:
     encoding:
       charset: UTF-8
@@ -35,6 +35,8 @@ spring:
   jms:
     template:
       qos-enabled: true
+  application:
+    name: inventory-service
 
 logging:
   level:
@@ -46,3 +48,9 @@ logging:
   pattern:
     file: "%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n"
     console: "%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger.%M - %msg%n"
+
+eureka:
+  client:
+    service-url:
+        defaultZone: http://localhost:8761/eureka
+
