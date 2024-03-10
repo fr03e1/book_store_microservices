@@ -1,12 +1,13 @@
 package org.example.api.controller;
 
 import jakarta.validation.Valid;
-import org.example.api.constant.ApiConstant;
+import org.example.constant.ApiConstant;
 import org.example.api.dto.author.AuthorRequest;
 import org.example.api.dto.author.AuthorResponse;
 import org.example.api.mapper.author.AuthorDtoMapper;
 import org.example.model.Author;
 import org.example.service.author.AuthorService;
+import org.example.service.producer.KafkaProducerImpl;
 import org.mapstruct.factory.Mappers;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,9 +21,11 @@ import java.util.stream.Collectors;
 public class AuthorController {
     private final AuthorService authorService;
     private final AuthorDtoMapper authorMapper;
+    private final KafkaProducerImpl kafkaProducer;
 
-    public AuthorController(AuthorService authorService) {
+    public AuthorController(AuthorService authorService, KafkaProducerImpl kafkaProducer) {
         this.authorService = authorService;
+        this.kafkaProducer = kafkaProducer;
         this.authorMapper = Mappers.getMapper(AuthorDtoMapper.class);
     }
 
@@ -41,6 +44,7 @@ public class AuthorController {
     public AuthorResponse createAuthor(@Valid @RequestBody AuthorRequest authorRequest) {
         final Author author = this.authorMapper.map(authorRequest);
         final Author createdAuthor = this.authorService.createAuthor(author);
+        this.kafkaProducer.sendMessage("Author created");
         return this.authorMapper.authorToAuthorResponse(createdAuthor);
     }
 }

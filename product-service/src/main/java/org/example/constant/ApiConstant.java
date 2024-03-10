@@ -1,4 +1,4 @@
-package org.example.api.constant;
+package org.example.constant;
 
 public class ApiConstant {
     private final static String API = "/api";

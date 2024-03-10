@@ -37,6 +37,13 @@ spring:
       qos-enabled: true
   application:
     name: inventory-service
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: product-books
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 
 logging:
   level:

@@ -1,7 +1,7 @@
 package org.example.api.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.api.constant.ApiConstant;
+import org.example.constant.ApiConstant;
 import org.example.model.Book;
 import org.example.service.book.BookService;
 import org.springframework.web.bind.annotation.*;
