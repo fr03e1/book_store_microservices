@@ -20,7 +20,14 @@ spring:
           uri: lb://inventory-service
           predicates:
             - Path=/api/inventory
-
+        - id: product-service-books
+          uri: lb://product-service
+          predicates:
+            - Path=/api/books/**
+        - id: product-service-authors
+          uri: lb://product-service
+          predicates:
+            - Path=/api/authors/**
 logging:
   level:
     root: INFO

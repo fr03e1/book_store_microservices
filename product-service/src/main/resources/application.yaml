@@ -1,0 +1,56 @@
+server:
+  port: 8083
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  error:
+    whitelabel:
+      enabled: false
+    path: /error
+
+spring:
+  profiles:
+    active: @activeProfile@
+  jpa:
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+        order_by:
+          default_null_ordering: last
+    open-in-view: false
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 100MB
+  datasource:
+    hikari:
+      minimum-idle: 10
+      maximum-pool-size: 50
+  data:
+    web:
+      pageable:
+        max-page-size: 250
+  jms:
+    template:
+      qos-enabled: true
+  application:
+    name: product-service
+
+logging:
+  level:
+    root: INFO
+  file:
+    path: .logs/product-service
+    name: ${logging.file.path}/log.log
+    max-history: 0
+  pattern:
+    file: "%d{dd-MM-yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M - %msg%n"
+    console: "%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger.%M - %msg%n"
+
+eureka:
+  client:
+    service-url:
+        defaultZone: http://localhost:8761/eureka
+
