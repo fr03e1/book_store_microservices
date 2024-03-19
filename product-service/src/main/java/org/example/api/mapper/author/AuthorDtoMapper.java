@@ -5,7 +5,6 @@ import org.example.api.dto.author.AuthorResponse;
 import org.example.model.Author;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
